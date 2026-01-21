@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1vbxtp868wdk"]
+
+[ext_resource type="Texture2D" uid="uid://d4nfe2ccgqfyk" path="res://assets/sprites/pong-spritesheet.png" id="1_kr2ep"]
+[ext_resource type="Script" uid="uid://c4uo7t3uyfkwu" path="res://scripts/player_paddle.gd" id="1_uktar"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1xxw"]
+radius = 8.0
+height = 80.0
+
+[node name="PlayerPaddle" type="CharacterBody2D"]
+script = ExtResource("1_uktar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5707964
+texture = ExtResource("1_kr2ep")
+region_enabled = true
+region_rect = Rect2(16, 0, 80, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.1415927
+shape = SubResource("CapsuleShape2D_x1xxw")
