@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpgcd0f6jxlhv"]
+
+[ext_resource type="Script" uid="uid://c7ip7chvgm0mu" path="res://scripts/goalzone.gd" id="1_c0loc"]
+
+[node name="Goalzone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_c0loc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
