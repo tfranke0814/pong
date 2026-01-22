@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
+const SPEED = 350.0
 
 func _ready() -> void:
-	velocity.x = -SPEED
+	velocity.x = SPEED * [-1,1][randi() % 2]
+	print(velocity.x)
 	velocity.y = sin(randf_range(-PI/12,PI/12)) * SPEED
 	print(velocity.y)
 	
