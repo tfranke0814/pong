@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkgsgplmdrdk4"]
+[gd_scene load_steps=5 format=3 uid="uid://bkgsgplmdrdk4"]
 
 [ext_resource type="Texture2D" uid="uid://d4nfe2ccgqfyk" path="res://assets/sprites/pong-spritesheet.png" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://bflk7km14f5u2" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://7u6qgnr5u586" path="res://assets/sfx/4359__noisecollector__pongblipf4.wav" id="3_f7cbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
 radius = 8.0
@@ -19,5 +20,9 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f7cbr")
+bus = &"SFX"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

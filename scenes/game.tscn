@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://djwewioeynbpj"]
+[gd_scene load_steps=10 format=4 uid="uid://djwewioeynbpj"]
 
 [ext_resource type="Script" uid="uid://tfnndaytre5u" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://d1vbxtp868wdk" path="res://scenes/player_paddle.tscn" id="2_lnu2h"]
 [ext_resource type="Script" uid="uid://d4kwqw234unyb" path="res://scripts/score.gd" id="3_iywne"]
 [ext_resource type="Texture2D" uid="uid://ccyx78fo3ln1o" path="res://assets/sprites/pong-tilesheet.png" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cpgcd0f6jxlhv" path="res://scenes/goalzone.tscn" id="4_lbhrr"]
+[ext_resource type="FontFile" uid="uid://dcrs5fdgweq10" path="res://assets/fonts/m5x7.ttf" id="4_p57ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("3_lnu2h")
@@ -50,13 +51,15 @@ script = ExtResource("3_iywne")
 [node name="ScoreP1" type="Label" parent="CanvasLayer/Score"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("4_p57ef")
+theme_override_font_sizes/font_size = 80
 text = "0"
 
 [node name="ScoreP2" type="Label" parent="CanvasLayer/Score"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("4_p57ef")
+theme_override_font_sizes/font_size = 80
 text = "0"
 
 [node name="PlayerPaddle1" parent="." instance=ExtResource("2_lnu2h")]
