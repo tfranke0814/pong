@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bi08mwvmdg0ff"]
+[gd_scene load_steps=10 format=4 uid="uid://bi08mwvmdg0ff"]
 
 [ext_resource type="Script" uid="uid://boh04jopq1q4d" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dcrs5fdgweq10" path="res://assets/fonts/m5x7.ttf" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://ccyx78fo3ln1o" path="res://assets/sprites/pong-tilesheet.png" id="2_wu84c"]
 [ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="3_8ln24"]
 [ext_resource type="PackedScene" uid="uid://d1vbxtp868wdk" path="res://scenes/player_paddle.tscn" id="5_8ln24"]
+[ext_resource type="Script" uid="uid://btb050p5vhv2f" path="res://scripts/settings.gd" id="6_rtw2f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqqt6"]
 texture = ExtResource("2_wu84c")
@@ -15,7 +16,24 @@ texture = ExtResource("2_wu84c")
 [sub_resource type="TileSet" id="TileSet_wu84c"]
 sources/0 = SubResource("TileSetAtlasSource_bqqt6")
 
-[node name="Main Menu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.92156863)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,26 +105,97 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 
-[node name="Button1P" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="P1Button" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("2_ekxnf")
 theme_override_font_sizes/font_size = 80
 text = "1P"
 
-[node name="Button2P" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="P2Button" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("2_ekxnf")
 theme_override_font_sizes/font_size = 80
 text = "2P"
 
-[node name="ButtonSettings" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_ekxnf")
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 
-[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer/Button1P" to="." method="_on_button_1p_pressed"]
-[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer/Button2P" to="." method="_on_button_2p_pressed"]
+[node name="ExitButton" type="Button" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="Settings" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_rtw2f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Settings"]
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings/CanvasLayer"]
+custom_minimum_size = Vector2(300, 250)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ln24")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Settings/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="Settings/CanvasLayer/PanelContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="Settings/CanvasLayer/PanelContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="Settings/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 12
+columns = 2
+
+[node name="Label" type="Label" parent="Settings/CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 32
+text = "Points 2 Win"
+
+[node name="SpinBox" type="SpinBox" parent="Settings/CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer/P1Button" to="." method="_on_p1_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer/P2Button" to="." method="_on_p2_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Settings/CanvasLayer/PanelContainer/VBoxContainer/Header/BackButton" to="Settings" method="_on_back_button_pressed"]
