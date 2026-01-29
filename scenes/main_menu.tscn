@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bi08mwvmdg0ff"]
+[gd_scene load_steps=9 format=4 uid="uid://bi08mwvmdg0ff"]
 
 [ext_resource type="Script" uid="uid://boh04jopq1q4d" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dcrs5fdgweq10" path="res://assets/fonts/m5x7.ttf" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://ccyx78fo3ln1o" path="res://assets/sprites/pong-tilesheet.png" id="2_wu84c"]
 [ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="3_8ln24"]
 [ext_resource type="PackedScene" uid="uid://d1vbxtp868wdk" path="res://scenes/player_paddle.tscn" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://c3ul63bke2o3b" path="res://assets/sprites/Screenshot_20260128_194532_Samsung Notes.png" id="5_rtw2f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqqt6"]
 texture = ExtResource("2_wu84c")
@@ -63,18 +64,23 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -120.0
-offset_top = -120.5
+offset_top = 47.5
 offset_right = 120.0
-offset_bottom = 120.5
+offset_bottom = 288.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
+[node name="Screenshot20260128194532SamsungNotes" type="Sprite2D" parent="VBoxContainer2"]
+position = Vector2(114, -188.5)
+scale = Vector2(0.20015606, 0.20015606)
+texture = ExtResource("5_rtw2f")
+
 [node name="Label" type="Label" parent="VBoxContainer2"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ekxnf")
 theme_override_font_sizes/font_size = 160
-text = "Pong"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
