@@ -84,5 +84,15 @@ min_value = 1.0
 value = 1.0
 alignment = 1
 
+[node name="Credits" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("2_6wm04")
+theme_override_font_sizes/font_size = 16
+text = "Credits
+Font: m5x7 by Daniel Linssen itch.io
+SFX: PongBlipF4 by NoiseCollector freesound.org"
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/GridContainer/Points2WinSpinBox" to="." method="_on_points_2_win_spin_box_value_changed"]
