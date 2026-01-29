@@ -1,11 +1,24 @@
 extends Node
 
+const options_path = "user://options.data"
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+# Default Options
+var default_points_to_win: int = 11
 
+func read_options() -> Dictionary:
+	var options = {}
+	var file = FileAccess.open(options_path, FileAccess.READ)
+	if file:
+		options = file.get_var()
+		file.close()
+	return options
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func write_option(options: Dictionary) -> void:
+	var file = FileAccess.open(options_path, FileAccess.WRITE)
+	file.store_var(options)
+	file.close()
+	
+func set_points_to_win(value: float):
+	var options = read_options()
+	options.points_to_win = value
+	write_option(options)

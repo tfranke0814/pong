@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, direction, SPEED * delta)
 		else: # Stops when equal
 			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
-	elif ai_paddle:
+	elif ai_paddle and not GameManager.victory:
 		# AI Controls without ball, returns to middle
 		var deltay:= 324 - global_position.y
 		velocity.y = move_toward(velocity.y, deltay/abs(deltay) * SPEED/2, SPEED * delta)

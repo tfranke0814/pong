@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://kjxb5lu2ph7l"]
+
+[ext_resource type="Script" uid="uid://c7237pd11ujye" path="res://scripts/victory.gd" id="1_le47n"]
+[ext_resource type="FontFile" uid="uid://dcrs5fdgweq10" path="res://assets/fonts/m5x7.ttf" id="2_faxov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl81x"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.92156863)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_le47n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -91.0
+offset_right = 125.5
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_hl81x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="WinnerLabel" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_faxov")
+theme_override_font_sizes/font_size = 48
+text = "Player %d Wins"
